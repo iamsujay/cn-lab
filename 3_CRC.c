@@ -64,4 +64,4 @@ void decode(char* data)
 		printf("Error-free\n");
 	else
 		printf("Error detected\n");
-}
+} 
