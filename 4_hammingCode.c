@@ -41,25 +41,25 @@ void sender(int* data)
 
 void reciever()
 {       
-    char input[7], msg[7];
+    char input[7];
     printf("\nData to recieve : ");
     scanf("%s", input);
-    int i;
+    int data[7], i;
     for(i = 0; i <7; i++)
-            msg[i] = input[i] - '0';
+        data[i] = input[i] - '0';
 
     int b3, b2, b1, b0, q2, q1, q0, s2, s1, s0;
-    b3 = msg[0];
-    b2 = msg[1];
-    b1 = msg[2];
-    b0 = msg[3];
-    q2 = msg[4];
-    q1 = msg[5];
-    q0 = msg[6];
+    b3 = data[0];
+    b2 = data[1];
+    b1 = data[2];
+    b0 = data[3];
+    q2 = data[4];
+    q1 = data[5];
+    q0 = data[6];
 
-    s0 = (b0 ^ b1 ^ b2 ^ q0);
-    s1 = (b1 ^ b2 ^ b3 ^ q1);
-    s2 = (b3 ^ b0 ^ b1 ^ q2);
+    s0 = b0 ^ b1 ^ b2 ^ q0;
+    s1 = b1 ^ b2 ^ b3 ^ q1;
+    s2 = b3 ^ b0 ^ b1 ^ q2;
 
     // represent syndrome in 3-bit binary
     int syndrome = s0 + (s1 * 10) + (s2 * 100);
@@ -84,8 +84,15 @@ void reciever()
                     break;
     }
     if(pos == -1 )
-    printf("Error free\n");
+        printf("Error free\n");
     else
-    printf("Error detected at bit %d \n", pos);
+    {
+        printf("Error detected at bit %d \n", pos);
+        data[pos-1] = !(data[pos-1]);
+        printf("Corrected data : ");
+        for(i = 0; i <7; i++)
+            printf("%d", data[i]);
+        printf("\n");
+    }
 }
 
