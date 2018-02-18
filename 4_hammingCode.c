@@ -23,9 +23,9 @@ void sender(int* data)
     a1 = data[2];
     a0 = data[3];
 
-    r0 = (a0 ^ a1 ^ a2);
-    r1 = (a1 ^ a2 ^ a3);
-    r2 = (a3 ^ a0 ^ a1);
+    r0 = a0 ^ a1 ^ a2;
+    r1 = a1 ^ a2 ^ a3;
+    r2 = a3 ^ a0 ^ a1;
 
     data[4] = r2;
     data[5] = r1;
