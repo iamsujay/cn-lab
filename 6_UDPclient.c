@@ -5,7 +5,7 @@
 #include<arpa/inet.h>
 #include<string.h>
 
-#define PORT 8080
+#define PORT 7892
 
 void main()
 {
@@ -15,11 +15,8 @@ void main()
 	servAddr.sin_port 	= htons(PORT);
 	inet_pton(AF_INET,"127.0.0.1",&servAddr.sin_addr);
 
-	char buf[1024000], filename[10];
-	printf("filename : ");
-	scanf("%s", filename);
-    FILE* fp = fopen(filename, "r");
-	while(fgets(buf, sizeof(buf), fp) )
-	    sendto(newSocket, buf, strlen(buf) , 0, (struct sockaddr*) &servAddr, sizeof(servAddr));
-	fclose(fp);
+	char buf[1024];
+	printf("Message : ");
+	fgets(buf, sizeof(buf), stdin);
+	sendto(newSocket, buf, strlen(buf), 0, (struct sockaddr*) &servAddr, sizeof(servAddr));
   }
