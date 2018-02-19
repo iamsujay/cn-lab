@@ -5,7 +5,7 @@
 #include<arpa/inet.h>
 #include<string.h>
 
-#define PORT 8080
+#define PORT 7892
 
 void main()
 {
