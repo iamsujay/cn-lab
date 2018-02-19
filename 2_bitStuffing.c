@@ -34,6 +34,8 @@ void sender(char* data)
 		}
 		if(data[i] == '1')
 			oneCount++;
+		else
+			oneCount = 0;
 	}
 	strcpy(msg+j, FLAG );			// message to end with FLAG
 	printf("Sent msg : %s \n", msg);
@@ -55,7 +57,9 @@ void reciever(char* msg)
 			oneCount = 0;
 		}
 		if(msg[i] == '1')
-				oneCount++;
+			oneCount++;
+		else
+			oneCount = 0;
 	}
 	data[j] = '\0';
 	printf("Decoded data : %s \n", data);
