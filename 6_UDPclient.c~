@@ -20,6 +20,6 @@ void main()
 	scanf("%s", filename);
     FILE* fp = fopen(filename, "r");
 	while(fgets(buf, sizeof(buf), fp) )
-	    sendto(newSocket, buf, strlen(buf) , 0, (struct sockaddr*) &servAddr, sizeof(servAddr));
+	    sendto(newSocket, buf, strlen(buf) - 1, 0, (struct sockaddr*) &servAddr, sizeof(servAddr));
 	fclose(fp);
   }

@@ -18,6 +18,6 @@ void main()
 	bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr));
 	
 	char buf[1024];
-	while( recvfrom(servSock, &buf, sizeof(buf), 0, NULL, NULL) )
-	    write(1, buf, strlen(buf));
+	recvfrom(servSock, &buf, sizeof(buf), 0, NULL, NULL);
+	write(1, buf, strlen(buf));
 }
