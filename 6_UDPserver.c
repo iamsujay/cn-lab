@@ -18,6 +18,13 @@ void main()
 	bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr));
 	
 	char buf[1024];
-	recvfrom(servSock, &buf, sizeof(buf), 0, NULL, NULL);
-	write(1, buf, strlen(buf));
+	struct sockaddr_in cliAddr;
+	int cliSize;
+	while(1)
+	{
+		recvfrom(servSock, &buf, sizeof(buf), 0, (struct sockaddr*)&cliAddr, &cliSize);
+		if(strcmp(buf, "exit") == 0)
+			break;
+		printf("%s\n", buf);
+	};
 }
