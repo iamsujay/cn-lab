@@ -16,7 +16,11 @@ void main()
 	inet_pton(AF_INET,"127.0.0.1",&servAddr.sin_addr);
 
 	char buf[1024];
-	printf("Message : ");
-	fgets(buf, sizeof(buf), stdin);
-	sendto(newSocket, buf, strlen(buf), 0, (struct sockaddr*) &servAddr, sizeof(servAddr));
-  }
+	do
+	{
+		printf("Message : ");
+		scanf("%[^\n]%*c", buf);
+		sendto(newSocket, buf, strlen(buf)+1, 0, (struct sockaddr*)&servAddr, sizeof(servAddr));
+  	}while(strcmp(buf, "exit") != 0);
+
+ }
