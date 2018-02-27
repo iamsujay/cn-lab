@@ -13,7 +13,7 @@ void main()
 	struct sockaddr_in servAddr;
 	servAddr.sin_family 	 = AF_INET;
 	servAddr.sin_addr.s_addr = INADDR_ANY;
-	servAddr.sin_port 		 = htons(PORT);
+	servAddr.sin_port 	 = htons(PORT);
 
 	bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr));
 	
